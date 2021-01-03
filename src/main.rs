@@ -1,5 +1,6 @@
 use rand::Rng;
 
+
 fn main() {
 
     let adjectives = [
@@ -50,10 +51,29 @@ fn main() {
     let mut rng = rand::thread_rng();
     let adjective_index = rng.gen_range(0..adjectives.len());
     let noun_index = rng.gen_range(0..nouns.len());
+    let haiku_name = format!("{}-{}", adjectives[adjective_index], nouns[noun_index]);
+    
+    println!("{}", haiku_name);
 
-    println!("{}-{}", adjectives[adjective_index], nouns[noun_index]);
+    let random_str = random_str(6);
 
+    let instanced_name = format!("{}-{}", haiku_name, random_str);
+    println!("{}", instanced_name);
 
+}
+
+fn random_str(len:i8) -> String {
+
+    let mut rng = rand::thread_rng();
+    let numbers:&str = "012356789";
+    let mut random_str = String::with_capacity(len as usize);
+
+    for _ in 0..len {
+        let rng_index = rng.gen_range(0..numbers.chars().count());
+        random_str.push(numbers.chars().nth(rng_index).unwrap());
+    }
+
+    random_str
 }
 
 
