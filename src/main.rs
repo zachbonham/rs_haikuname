@@ -1,8 +1,6 @@
-
-
+use rand::Rng;
 
 fn main() {
-    println!("Hello, world!");
 
     let adjectives = [
         "red", "green", "yellow", "orange", "azure", "sapphire", "gold", "silver", "bronze",
@@ -48,6 +46,13 @@ fn main() {
         "apple", "banana", "mango", "kiwi", "cantelope", "potato", "strawberry", "blueberry", "grape", "lemon", "lime",
         "orange", "avocado", "onion", "cherry", "pineapple", "peach", "papaya", "apricot", "persimmon", "coconut"
     ];
+
+    let mut rng = rand::thread_rng();
+    let adjective_index = rng.gen_range(0..adjectives.len());
+    let noun_index = rng.gen_range(0..nouns.len());
+
+    println!("{}-{}", adjectives[adjective_index], nouns[noun_index]);
+
 
 }
 
