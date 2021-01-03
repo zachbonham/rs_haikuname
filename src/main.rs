@@ -42,9 +42,9 @@ fn main() {
         "harpy", "hydra","kraken","werewolf", "giant", "elemental", "genie", "djinn", "ghost",
         "gnoll", "golem", "gorgon", "mummy", "nymph","ogre", "ooze", "owlbear", "pegasus", "phantom",
         "salamander", "shadow", "scorpion","skeleton", "spectre", "sprite", "titan", "troll", "unicorn",
-        "vampire", "wight", "willowisp", "wraith", "wyvern", "zombie", "bear", "elephant", "hawk", "horse",
+        "vampire", "wight", "willow-wisp", "wraith", "wyvern", "zombie", "bear", "elephant", "hawk", "horse",
         "leopard", "lion", "lizard", "octopus", "owl", "rat", "raven", "shark", "toad", "tiger", "weasel", "orca",
-        "apple", "banana", "mango", "kiwi", "cantelope", "potato", "strawberry", "blueberry", "grape", "lemon", "lime",
+        "apple", "banana", "mango", "kiwi", "cantaloupe", "potato", "strawberry", "blueberry", "grape", "lemon", "lime",
         "orange", "avocado", "onion", "cherry", "pineapple", "peach", "papaya", "apricot", "persimmon", "coconut"
     ];
 
