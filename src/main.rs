@@ -1,5 +1,5 @@
 use rand::Rng;
-
+use clap::{Arg, App};
 
 fn main() {
 
@@ -48,29 +48,53 @@ fn main() {
         "orange", "avocado", "onion", "cherry", "pineapple", "peach", "papaya", "apricot", "persimmon", "coconut"
     ];
 
+    let matches = App::new("Haiku Name")
+        .version("0.1.0")
+        .author("Zach Bonham <zachbonham@gmail.com>")
+        .about("Generates a 'haiku-lik' name ala heroku. e.g. weeping-willow")
+        .arg(Arg::new("random")
+            .short('r')
+            .long("random")
+            .value_name("COUNT")
+            .about("Specifies if appending a random instance count to the name generated. e.g. weeping-willow-123456")
+            .takes_value(true))
+        .get_matches();
+
+
     let mut rng = rand::thread_rng();
     let adjective_index = rng.gen_range(0..adjectives.len());
     let noun_index = rng.gen_range(0..nouns.len());
     let haiku_name = format!("{}-{}", adjectives[adjective_index], nouns[noun_index]);
     
+
+    if let Some(count) = matches.value_of("random") {
+        println!("A random instance count with a length of {} requested", count);
+
+        match count.parse::<i8>() {
+            Ok(i) => {
+                let random_str = random_str(i);
+                let instanced_name = format!("{}-{}", haiku_name, random_str);
+
+                println!("{}", instanced_name);
+            },
+            Err(_e) => (),
+          };
+
+        return ;
+    }
+    
     println!("{}", haiku_name);
-
-    let random_str = random_str(6);
-
-    let instanced_name = format!("{}-{}", haiku_name, random_str);
-    println!("{}", instanced_name);
-
 }
 
 fn random_str(len:i8) -> String {
 
     let mut rng = rand::thread_rng();
-    let numbers:&str = "012356789";
+    let elements:&str = "012356789abcdef";
     let mut random_str = String::with_capacity(len as usize);
 
     for _ in 0..len {
-        let rng_index = rng.gen_range(0..numbers.chars().count());
-        random_str.push(numbers.chars().nth(rng_index).unwrap());
+        let rng_index = rng.gen_range(0..elements.chars().count());
+        random_str.push(elements.chars().nth(rng_index).unwrap());
     }
 
     random_str
